@@ -4,11 +4,11 @@ interface IProps {
   children?: ReactNode;
 }
 
-const index: FC<IProps> = () => {
+const Recommend: FC<IProps> = (props: IProps) => {
   return (
     <div>
-      <div>template</div>
+      <div>Recommend</div>
     </div>
   );
 };
-export default memo(index);
+export default memo(Recommend);
