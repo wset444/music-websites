@@ -1,8 +1,9 @@
 // src/api/axiosInstance.ts
 import axios from 'axios';
+// import { BASE_URL } from './config/index';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://codercba.com:9002',
+  baseURL: process.env.REACT_APP_BASE_URL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json'
