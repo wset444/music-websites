@@ -2,10 +2,13 @@ import React, { ReactNode, memo } from 'react';
 import type, { FC } from 'react';
 import { Input } from 'antd';
 import { NavLink } from 'react-router-dom'; // 只需要导入 useRoutes
+
+import { SearchOutlined } from '@ant-design/icons';
+
+import { Link } from 'react-router-dom'; // 只需要导入 useRoutes
 import { AppHeaderWrapper, HeaderLeft, HeaderRight } from './style';
 
 import { headerLinks } from '@/assets/data/local-data';
-import { SearchOutlined } from '@ant-design/icons';
 
 interface IProps {
   children?: ReactNode;
