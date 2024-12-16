@@ -3,10 +3,12 @@ import { useSelector, TypedUseSelectorHook, useDispatch } from 'react-redux';
 import createReducer from './module/counter';
 import allre from './module/all';
 import { shallowEqual } from 'react-redux';
+import recommendReducer from '../views/discover/c-views/recommend/store/recommend';
 const store = configureStore({
   reducer: {
     counter: createReducer,
-    allres: allre
+    allres: allre,
+    recommend: recommendReducer
   }
 });
 
