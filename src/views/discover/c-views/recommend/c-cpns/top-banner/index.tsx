@@ -1,30 +1,54 @@
 import { useApp } from '@/store';
-import React, { ReactNode, memo } from 'react';
-import type, { FC } from 'react';
+import React, { ReactNode, memo, FC, useRef, useState, useEffect } from 'react';
 import { Carousel } from 'antd';
 import { BannerWrapper, BannerLeft, BannerRight, BannerControl } from './style';
-const contentStyle: React.CSSProperties = {
-  margin: 0,
-  height: '160px',
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#364d79'
-};
 
 interface IProps {
   children?: ReactNode;
 }
 
 const TopBanner: FC<IProps> = (props: IProps) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const bannerRef: any = useRef();
   const { banners } = useApp((state) => ({
     banners: state.recommend.banners
   }));
+  const onNext = () => {
+    bannerRef.current.next();
+  };
+  const onPrev = () => {
+    bannerRef.current.prev();
+  };
+  const handAfterChange = (item: number) => {
+    setCurrentIndex(item);
+    console.log(item);
+  };
+  let bgImageUrl = banners[currentIndex]?.imageUrl;
+
+  if (bgImageUrl) {
+    bgImageUrl = bgImageUrl + '?imageView&blur=40x20';
+  }
+  console.log(bgImageUrl);
+
+  // useEffect(() => {
+
+  // }, [currentIndex]);
+
   return (
-    <BannerWrapper>
+    <BannerWrapper
+      style={{ background: `url('${bgImageUrl}') center center / 6000px` }}
+    >
       <div className="banner wrap-v2">
         <BannerLeft>
-          <Carousel arrows={false} infinite={true} autoplay speed={1000}>
+          <Carousel
+            arrows={false}
+            infinite={true}
+            autoplay
+            speed={1000}
+            effect="fade"
+            ref={bannerRef}
+            afterChange={handAfterChange}
+          >
             {banners.map((item, key) => {
               return (
                 <div className="banner-item" key={key}>
@@ -37,11 +61,20 @@ const TopBanner: FC<IProps> = (props: IProps) => {
               );
             })}
           </Carousel>
+          {/* <ul className="dots">
+            {banners.map((item, index) => {
+              return (
+                <li key={index}>
+                  <span className="item"></span>
+                </li>
+              );
+            })}
+          </ul> */}
         </BannerLeft>
         <BannerRight></BannerRight>
         <BannerControl className="control">
-          <button className="btn left"></button>
-          <button className="btn right"></button>
+          <button className="btn left" onClick={onPrev}></button>
+          <button className="btn right" onClick={onNext}></button>
         </BannerControl>
       </div>
     </BannerWrapper>

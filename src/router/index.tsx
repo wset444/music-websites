@@ -22,6 +22,10 @@ const routes: RouteObject[] = [
     element: <Discover />,
     children: [
       {
+        index: true, // 默认路径
+        element: <Navigate to="/discover/recommend" />
+      },
+      {
         path: '/discover/recommend',
         element: <Recommend />
       },
