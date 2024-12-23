@@ -1,7 +1,10 @@
 import { useAppDispath } from '@/store';
 import React, { ReactNode, memo, useEffect } from 'react';
 import type, { FC } from 'react';
-import { fetchBannerDataAction } from './store/recommend';
+import {
+  fetchBannerDataAction,
+  fetchHotRecommendAction
+} from './store/recommend';
 import TopBanner from './c-cpns/top-banner';
 import HotRecommend from './c-cpns/hot-recommend';
 import { RecommendLeft, RecommendRight, Content } from './style';
@@ -13,6 +16,7 @@ const Recommend: FC<IProps> = (props: IProps) => {
   const dispatch = useAppDispath();
   useEffect(() => {
     dispatch(fetchBannerDataAction());
+    dispatch(fetchHotRecommendAction());
   }, []);
   return (
     <div>

@@ -5,15 +5,25 @@ import { AppHeaderWrapper } from './style';
 
 interface IProps {
   children?: ReactNode;
+  title?: string;
+  keywords?: string[];
+  moreText?: string;
+  moreLink?: string;
 }
 
 const AreaHeaderV1: FC<IProps> = (props: IProps) => {
+  const {
+    title = '默认标题',
+    keywords = [],
+    moreText = '更多',
+    moreLink = '/'
+  } = props;
   return (
     <AppHeaderWrapper className="sprite_02">
       <div className="left">
-        <h3 className="title">热门推荐</h3>
+        <h3 className="title">{title}</h3>
         <div className="keyword">
-          {['华语', '流行', '摇滚'].map((item) => {
+          {keywords.map((item) => {
             return (
               <div className="item" key={item}>
                 <span className="text">{item}</span>
@@ -24,8 +34,8 @@ const AreaHeaderV1: FC<IProps> = (props: IProps) => {
         </div>
       </div>
       <div className="right">
-        <a href="">更多</a>
-        <i className="  sprite_02 icon"></i>
+        <Link to={moreLink}>{moreText}</Link>
+        <i className="sprite_02 icon"></i>
       </div>
     </AppHeaderWrapper>
   );

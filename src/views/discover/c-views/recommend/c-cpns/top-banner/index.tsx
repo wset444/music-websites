@@ -21,14 +21,13 @@ const TopBanner: FC<IProps> = (props: IProps) => {
   };
   const handAfterChange = (item: number) => {
     setCurrentIndex(item);
-    console.log(item);
+    // console.log(item);
   };
   let bgImageUrl = banners[currentIndex]?.imageUrl;
 
   if (bgImageUrl) {
     bgImageUrl = bgImageUrl + '?imageView&blur=40x20';
   }
-  console.log(bgImageUrl);
 
   // useEffect(() => {
 
