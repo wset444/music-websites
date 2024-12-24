@@ -2,8 +2,10 @@ import React, { ReactNode, memo } from 'react';
 import type, { FC, useRef } from 'react';
 import { RecommendWrapper } from './style';
 import { useApp } from '@/store';
+import SongMenuItem from '@/components/songs-menu-item';
 
 import AreaHeaderV1 from '@/components/area-header-v1';
+import Item from 'antd/es/list/Item';
 interface IProps {
   children?: ReactNode;
 }
@@ -13,6 +15,7 @@ const HotRecommend: FC<IProps> = (props: IProps) => {
   const { hotRecommends } = useApp((state) => ({
     hotRecommends: state.recommend.hotRecommends
   }));
+  console.log(hotRecommends);
   return (
     <>
       <AreaHeaderV1
@@ -22,11 +25,13 @@ const HotRecommend: FC<IProps> = (props: IProps) => {
       />
       <RecommendWrapper>
         <div className="recommend-list">
-          <div>
-            {hotRecommends.map((item: any) => {
-              return <div key={item.id}>{item.name} </div>;
-            })}
-          </div>
+          {hotRecommends.map((item: any) => {
+            return (
+              <SongMenuItem key={item.id} itemData={item}>
+                {' '}
+              </SongMenuItem>
+            );
+          })}
         </div>
       </RecommendWrapper>
     </>
