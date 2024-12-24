@@ -34,6 +34,22 @@ const HotRecommend: FC<IProps> = (props: IProps) => {
           })}
         </div>
       </RecommendWrapper>
+      <AreaHeaderV1
+        title="新碟上架"
+        keywords={['华语', '流行', '摇滚']}
+        moreLink="/discover/songs"
+      />
+      <RecommendWrapper>
+        <div className="recommend-list">
+          {hotRecommends.map((item: any) => {
+            return (
+              <SongMenuItem key={item.id} itemData={item}>
+                {' '}
+              </SongMenuItem>
+            );
+          })}
+        </div>
+      </RecommendWrapper>
     </>
   );
 };

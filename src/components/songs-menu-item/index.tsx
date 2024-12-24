@@ -5,7 +5,7 @@ interface IProps {
   itemData?: any;
 }
 import { ThemeCoverWrapper } from './style';
-import { fromatCount } from '@/utils/format';
+import { fromatCount, fromatImg } from '@/utils/format';
 
 const SongMenuItem: FC<IProps> = (props: IProps) => {
   const { children, itemData } = props;
@@ -13,7 +13,11 @@ const SongMenuItem: FC<IProps> = (props: IProps) => {
     <div>
       <ThemeCoverWrapper>
         <div className="cover-top">
-          <img className="images" src={itemData.picUrl} alt="" />
+          <img
+            className="images"
+            src={fromatImg(itemData.picUrl, 140)}
+            alt=""
+          />
           <div className="cover sprite_covor">
             <div className="info sprite_covor">
               <span className="count">

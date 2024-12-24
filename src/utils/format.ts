@@ -5,3 +5,15 @@ export const fromatCount = (count: number) => {
     return count;
   }
 };
+
+export const fromatImg = (
+  url: string,
+  width: number,
+  height: number = width
+) => {
+  return url + `?param=${width}x${height}`;
+};
+
+// export const fromaMaxImg = (url: string, width: number, height: number) => {
+//   return url + `?param=${width}x${height}`;
+// };
