@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 export const AlbumWrapper = styled.div`
   margin-top: 50px;
-
+  .album-list {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+  }
   > .content {
     height: 186px;
     background-color: #f5f5f5;

@@ -3,11 +3,17 @@ import type, { FC } from 'react';
 import { AlbumWrapper } from './style';
 import { Carousel } from 'antd';
 import AreaHeaderV1 from '@/components/area-header-v1';
+import { useApp } from '@/store';
+import NewalbumItem from '@/components/new-album-item';
+
 interface IProps {
   children?: ReactNode;
 }
 
 const NewAlbum: FC<IProps> = (props: IProps) => {
+  const { newAlbum } = useApp((state) => ({
+    newAlbum: state.recommend.newAlbum
+  }));
   const bannerRef = useRef<ElementRef<typeof Carousel>>(null);
   const onBack = () => {
     bannerRef.current?.prev();
@@ -29,8 +35,16 @@ const NewAlbum: FC<IProps> = (props: IProps) => {
         ></button>
         <div className="album">
           <Carousel dots={false} speed={1500} ref={bannerRef}>
-            {[1, 2].map((item) => {
-              return <h1 key={item}>{item}</h1>;
+            {[0, 1].map((item) => {
+              return (
+                <div className="album-list" key={item}>
+                  {newAlbum.slice(item * 5, (item + 1) * 5).map((item) => {
+                    return (
+                      <NewalbumItem key={item.id} arr={item}></NewalbumItem>
+                    );
+                  })}
+                </div>
+              );
             })}
           </Carousel>
         </div>

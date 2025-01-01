@@ -3,7 +3,8 @@ import React, { ReactNode, memo, useEffect } from 'react';
 import type, { FC } from 'react';
 import {
   fetchBannerDataAction,
-  fetchHotRecommendAction
+  fetchHotRecommendAction,
+  fetchNewAlbumAction
 } from './store/recommend';
 import TopBanner from './c-cpns/top-banner';
 import HotRecommend from './c-cpns/hot-recommend';
@@ -18,6 +19,7 @@ const Recommend: FC<IProps> = (props: IProps) => {
   useEffect(() => {
     dispatch(fetchBannerDataAction());
     dispatch(fetchHotRecommendAction());
+    dispatch(fetchNewAlbumAction());
   }, []);
   return (
     <div>

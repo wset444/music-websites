@@ -13,3 +13,12 @@ export const getHotRecommend = async (list: any) => {
   });
   return response.data;
 };
+
+export const getNewAlbum = async (list: 10) => {
+  const response = await axiosInstance.get('/album/newest', {
+    params: {
+      limit: list
+    }
+  });
+  return response.data;
+};
