@@ -11,11 +11,14 @@ const NewalbumItem: FC<IProps> = (props: IProps) => {
   const { arr } = props;
   return (
     <AlbumWrapper>
-      <div className="cover">
+      <div className="top">
         <img src={fromatImg(arr.picUrl, 100)} alt="" />
+        <a href="/abc" className="cover sprite_covor">
+          {arr.name}
+        </a>
       </div>
-      <div className="info"></div>
-      <div className="album-info">
+
+      <div className="bottom">
         <div className="name">{arr.name}</div>
         <div className="artist">{arr.artist.name}</div>
       </div>

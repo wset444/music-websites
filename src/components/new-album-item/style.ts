@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const AlbumWrapper = styled.div`
-  .album-image {
+  .top {
     position: relative;
-    width: 100px;
+    width: 118px;
     height: 100px;
     overflow: hidden;
     margin-top: 15px;
@@ -19,22 +19,22 @@ export const AlbumWrapper = styled.div`
       right: 0;
       top: 0;
       bottom: 0;
-
+      background-position: 0 -570px;
       text-indent: -9999px;
     }
   }
 
-  .album-info {
+  .bottom {
     font-size: 12px;
-    width: 20px;
+    width: 100px;
     .name {
       color: #000;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
+      ${(props) => props.theme.mixin.textNowrap}
     }
 
     .artist {
+      height: 100px;
+      ${(props) => props.theme.mixin.textNowrap}
       color: #666;
     }
   }

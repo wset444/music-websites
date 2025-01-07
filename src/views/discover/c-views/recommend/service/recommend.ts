@@ -22,3 +22,12 @@ export const getNewAlbum = async (list: 10) => {
   });
   return response.data;
 };
+
+export const getPlayListDetail = async (id: number) => {
+  const response = await axiosInstance.get('/playlist/detail', {
+    params: {
+      id
+    }
+  });
+  return response.data;
+};

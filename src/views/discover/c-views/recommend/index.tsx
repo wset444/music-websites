@@ -4,11 +4,13 @@ import type, { FC } from 'react';
 import {
   fetchBannerDataAction,
   fetchHotRecommendAction,
-  fetchNewAlbumAction
+  fetchNewAlbumAction,
+  fetchRankingData
 } from './store/recommend';
 import TopBanner from './c-cpns/top-banner';
 import HotRecommend from './c-cpns/hot-recommend';
 import NewAlbum from './c-cpns/new-album';
+import TopRanking from './c-cpns/top-ranking';
 import { RecommendLeft, RecommendRight, Content } from './style';
 interface IProps {
   children?: ReactNode;
@@ -20,6 +22,7 @@ const Recommend: FC<IProps> = (props: IProps) => {
     dispatch(fetchBannerDataAction());
     dispatch(fetchHotRecommendAction());
     dispatch(fetchNewAlbumAction());
+    dispatch(fetchRankingData());
   }, []);
   return (
     <div>
@@ -28,6 +31,7 @@ const Recommend: FC<IProps> = (props: IProps) => {
         <RecommendLeft>
           <HotRecommend></HotRecommend>
           <NewAlbum></NewAlbum>
+          <TopRanking></TopRanking>
         </RecommendLeft>
         <RecommendRight>right</RecommendRight>
       </Content>

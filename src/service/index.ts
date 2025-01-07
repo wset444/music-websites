@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const axiosInstance: any = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
-  timeout: 10000,
+  timeout: 200000,
   headers: {
     'Content-Type': 'application/json'
   }
